@@ -1,0 +1,17 @@
+{
+  "name": "psx-kmiall-backend",
+  "version": "1.0.0",
+  "description": "Local backend for the PSX KMI-All Investment Screener Chrome extension. Holds all secrets (AI API key, data provider keys). Never ships inside the extension.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "^4.19.2"
+  }
+}

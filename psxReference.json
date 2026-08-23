@@ -1,0 +1,129 @@
+{
+  "_comment": "STATIC REFERENCE DATA ONLY — company full name + KMI-All sector classification. NO prices, NO financials, NO invented numbers live here; all of that comes from the live scrape in psxDataPortalProvider.js and is merged in at request time. This file exists because PSX's free market-watch page exposes only a numeric sector code per symbol, not a sector name, and there is no free bulk JSON endpoint for sector classification. Coverage is intentionally partial and skewed toward well-known / KSE-100 constituents that are easy to verify; symbols not listed here are treated as 'unclassified' and excluded from sector results rather than guessed. Extend this file by visiting https://dps.psx.com.pk/company/<SYMBOL> — the sector name is shown directly under the company name on that page.",
+  "companies": [
+    { "symbol": "HBL", "name": "Habib Bank Limited", "sector": "Commercial Banks" },
+    { "symbol": "UBL", "name": "United Bank Limited", "sector": "Commercial Banks" },
+    { "symbol": "MCB", "name": "MCB Bank Limited", "sector": "Commercial Banks" },
+    { "symbol": "NBP", "name": "National Bank of Pakistan", "sector": "Commercial Banks" },
+    { "symbol": "BOP", "name": "The Bank of Punjab", "sector": "Commercial Banks" },
+    { "symbol": "BAFL", "name": "Bank Alfalah Limited", "sector": "Commercial Banks" },
+    { "symbol": "ABL", "name": "Allied Bank Limited", "sector": "Commercial Banks" },
+    { "symbol": "AKBL", "name": "Askari Bank Limited", "sector": "Commercial Banks" },
+    { "symbol": "MEBL", "name": "Meezan Bank Limited", "sector": "Commercial Banks" },
+    { "symbol": "BAHL", "name": "Bank Al Habib Limited", "sector": "Commercial Banks" },
+    { "symbol": "FABL", "name": "Faysal Bank Limited", "sector": "Commercial Banks" },
+    { "symbol": "JSBL", "name": "JS Bank Limited", "sector": "Commercial Banks" },
+    { "symbol": "SCBPL", "name": "Standard Chartered Bank (Pakistan) Limited", "sector": "Commercial Banks" },
+    { "symbol": "SNBL", "name": "Soneri Bank Limited", "sector": "Commercial Banks" },
+    { "symbol": "BIPL", "name": "BankIslami Pakistan Limited", "sector": "Commercial Banks" },
+
+    { "symbol": "FFC", "name": "Fauji Fertilizer Company Limited", "sector": "Fertilizer" },
+    { "symbol": "EFERT", "name": "Engro Fertilizers Limited", "sector": "Fertilizer" },
+    { "symbol": "FATIMA", "name": "Fatima Fertilizer Company Limited", "sector": "Fertilizer" },
+
+    { "symbol": "OGDC", "name": "Oil & Gas Development Company Limited", "sector": "Oil & Gas Exploration" },
+    { "symbol": "PPL", "name": "Pakistan Petroleum Limited", "sector": "Oil & Gas Exploration" },
+    { "symbol": "POL", "name": "Pakistan Oilfields Limited", "sector": "Oil & Gas Exploration" },
+    { "symbol": "MARI", "name": "Mari Petroleum Company Limited", "sector": "Oil & Gas Exploration" },
+
+    { "symbol": "PSO", "name": "Pakistan State Oil Company Limited", "sector": "Oil & Gas Marketing" },
+    { "symbol": "SSGC", "name": "Sui Southern Gas Company Limited", "sector": "Oil & Gas Marketing" },
+    { "symbol": "SNGP", "name": "Sui Northern Gas Pipelines Limited", "sector": "Oil & Gas Marketing" },
+    { "symbol": "APL", "name": "Attock Petroleum Limited", "sector": "Oil & Gas Marketing" },
+    { "symbol": "HASCOL", "name": "Hascol Petroleum Limited", "sector": "Oil & Gas Marketing" },
+
+    { "symbol": "LUCK", "name": "Lucky Cement Limited", "sector": "Cement" },
+    { "symbol": "DGKC", "name": "D.G. Khan Cement Company Limited", "sector": "Cement" },
+    { "symbol": "MLCF", "name": "Maple Leaf Cement Factory Limited", "sector": "Cement" },
+    { "symbol": "FCCL", "name": "Fauji Cement Company Limited", "sector": "Cement" },
+    { "symbol": "KOHC", "name": "Kohat Cement Company Limited", "sector": "Cement" },
+    { "symbol": "CHCC", "name": "Cherat Cement Company Limited", "sector": "Cement" },
+    { "symbol": "THCCL", "name": "Thatta Cement Company Limited", "sector": "Cement" },
+    { "symbol": "PIOC", "name": "Pioneer Cement Limited", "sector": "Cement" },
+    { "symbol": "BWCL", "name": "Bestway Cement Limited", "sector": "Cement" },
+    { "symbol": "ACPL", "name": "Attock Cement Pakistan Limited", "sector": "Cement" },
+    { "symbol": "GWLC", "name": "Gharibwal Cement Limited", "sector": "Cement" },
+
+    { "symbol": "HUBC", "name": "Hub Power Company Limited", "sector": "Power Generation & Distribution" },
+    { "symbol": "KAPCO", "name": "Kot Addu Power Company Limited", "sector": "Power Generation & Distribution" },
+    { "symbol": "KEL", "name": "K-Electric Limited", "sector": "Power Generation & Distribution" },
+    { "symbol": "NPL", "name": "Nishat Power Limited", "sector": "Power Generation & Distribution" },
+    { "symbol": "NCPL", "name": "Nishat Chunian Power Limited", "sector": "Power Generation & Distribution" },
+
+    { "symbol": "SYS", "name": "Systems Limited", "sector": "Technology & Communication" },
+    { "symbol": "NETSOL", "name": "NetSol Technologies Limited", "sector": "Technology & Communication" },
+    { "symbol": "AIRLINK", "name": "Air Link Communication Limited", "sector": "Technology & Communication" },
+    { "symbol": "TRG", "name": "TRG Pakistan Limited", "sector": "Technology & Communication" },
+    { "symbol": "OCTOPUS", "name": "Octopus Digital Limited", "sector": "Technology & Communication" },
+    { "symbol": "PTC", "name": "Pakistan Telecommunication Company Limited", "sector": "Technology & Communication" },
+    { "symbol": "WTL", "name": "WorldCall Telecom Limited", "sector": "Technology & Communication" },
+
+    { "symbol": "NML", "name": "Nishat Mills Limited", "sector": "Textile Composite" },
+    { "symbol": "GATM", "name": "Gul Ahmed Textile Mills Limited", "sector": "Textile Composite" },
+    { "symbol": "KTML", "name": "Kohinoor Textile Mills Limited", "sector": "Textile Composite" },
+    { "symbol": "INIL", "name": "Interloop Limited", "sector": "Textile Composite" },
+
+    { "symbol": "INDU", "name": "Indus Motor Company Limited", "sector": "Automobile Assembler" },
+    { "symbol": "HCAR", "name": "Honda Atlas Cars (Pakistan) Limited", "sector": "Automobile Assembler" },
+    { "symbol": "ATLH", "name": "Atlas Honda Limited", "sector": "Automobile Assembler" },
+    { "symbol": "GHNI", "name": "Ghandhara Nissan Limited", "sector": "Automobile Assembler" },
+
+    { "symbol": "GTYR", "name": "General Tyre and Rubber Company of Pakistan Limited", "sector": "Automobile Parts" },
+    { "symbol": "EXIDE", "name": "Exide Pakistan Limited", "sector": "Automobile Parts" },
+    { "symbol": "LOADS", "name": "Loads Limited", "sector": "Automobile Parts" },
+
+    { "symbol": "SEARL", "name": "The Searle Company Limited", "sector": "Pharmaceuticals" },
+    { "symbol": "GLAXO", "name": "GlaxoSmithKline Pakistan Limited", "sector": "Pharmaceuticals" },
+    { "symbol": "ABOT", "name": "Abbott Laboratories (Pakistan) Limited", "sector": "Pharmaceuticals" },
+    { "symbol": "HINOON", "name": "Highnoon Laboratories Limited", "sector": "Pharmaceuticals" },
+    { "symbol": "AGP", "name": "AGP Limited", "sector": "Pharmaceuticals" },
+    { "symbol": "FEROZ", "name": "Ferozsons Laboratories Limited", "sector": "Pharmaceuticals" },
+    { "symbol": "HALEON", "name": "Haleon Pakistan Limited", "sector": "Pharmaceuticals" },
+
+    { "symbol": "COLG", "name": "Colgate-Palmolive (Pakistan) Limited", "sector": "Food & Personal Care" },
+    { "symbol": "EFUL", "name": "Engro Foods / FrieslandCampina Pakistan Limited", "sector": "Food & Personal Care" },
+    { "symbol": "NATF", "name": "National Foods Limited", "sector": "Food & Personal Care" },
+    { "symbol": "FFL", "name": "Fauji Foods Limited", "sector": "Food & Personal Care" },
+
+    { "symbol": "EPCL", "name": "Engro Polymer & Chemicals Limited", "sector": "Chemical" },
+    { "symbol": "LOTCHEM", "name": "Lotte Chemical Pakistan Limited", "sector": "Chemical" },
+    { "symbol": "SPEL", "name": "Synthetic Products Enterprises Limited", "sector": "Chemical" },
+
+    { "symbol": "ISL", "name": "International Steels Limited", "sector": "Engineering" },
+    { "symbol": "MUGHAL", "name": "Mughal Iron & Steel Industries Limited", "sector": "Engineering" },
+    { "symbol": "ASTL", "name": "Amreli Steels Limited", "sector": "Engineering" },
+    { "symbol": "ITTEFAQ", "name": "Ittefaq Iron Industries Limited", "sector": "Engineering" },
+
+    { "symbol": "AICL", "name": "Adamjee Insurance Company Limited", "sector": "Insurance" },
+    { "symbol": "IGIHL", "name": "IGI Holdings Limited", "sector": "Insurance" },
+    { "symbol": "NICL", "name": "Nishat Insurance Limited", "sector": "Insurance" },
+    { "symbol": "JGICL", "name": "Jubilee General Insurance Company Limited", "sector": "Insurance" },
+
+    { "symbol": "FHAM", "name": "First Habib Modaraba", "sector": "Modarabas" },
+    { "symbol": "BFMOD", "name": "B.F. Modaraba", "sector": "Modarabas" },
+
+    { "symbol": "DCR", "name": "Dolmen City REIT", "sector": "REIT" },
+
+    { "symbol": "JDWS", "name": "JDW Sugar Mills Limited", "sector": "Sugar & Allied" },
+
+    { "symbol": "PKGS", "name": "Packages Limited", "sector": "Paper & Board" },
+    { "symbol": "CEPB", "name": "Century Paper & Board Mills Limited", "sector": "Paper & Board" },
+
+    { "symbol": "GHGL", "name": "Ghani Glass Limited", "sector": "Glass & Ceramics" },
+    { "symbol": "TGL", "name": "Tariq Glass Industries Limited", "sector": "Glass & Ceramics" },
+
+    { "symbol": "POML", "name": "Punjab Oil Mills Limited", "sector": "Vanaspati & Allied" },
+
+    { "symbol": "ATRL", "name": "Attock Refinery Limited", "sector": "Refinery" },
+    { "symbol": "NRL", "name": "National Refinery Limited", "sector": "Refinery" },
+    { "symbol": "PRL", "name": "Pakistan Refinery Limited", "sector": "Refinery" },
+
+    { "symbol": "PAEL", "name": "Pak Elektron Limited", "sector": "Cable & Electrical Goods" },
+    { "symbol": "WAVES", "name": "Waves Singer Pakistan Limited", "sector": "Cable & Electrical Goods" },
+
+    { "symbol": "PNSC", "name": "Pakistan National Shipping Corporation", "sector": "Transport" },
+    { "symbol": "PIBTL", "name": "Pakistan International Bulk Terminal Limited", "sector": "Transport" },
+
+    { "symbol": "TPLP", "name": "TPL Properties Limited", "sector": "Property" }
+  ]
+}

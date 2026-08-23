@@ -1,0 +1,32 @@
+[
+  {
+    "name": "SAMPLE Bank Ltd (fictional — for testing only)",
+    "ticker": "SAMP1",
+    "sector": "Commercial Banks",
+    "price": 42.5,
+    "priceGrowthPct": 8.2,
+    "avgDailyVolume": 1200000,
+    "marketCapPkrMn": 85000,
+    "dividendYieldPct": 6.1,
+    "eps": 5.4,
+    "debtToEquity": 0.35,
+    "roePct": 17.2,
+    "asOf": "2026-01-01",
+    "source": "FICTIONAL TEST DATA — replace this file's contents with real figures"
+  },
+  {
+    "name": "SAMPLE Fertilizer Co (fictional — for testing only)",
+    "ticker": "SAMP2",
+    "sector": "Fertilizer",
+    "price": 118.0,
+    "priceGrowthPct": -3.4,
+    "avgDailyVolume": 450000,
+    "marketCapPkrMn": 62000,
+    "dividendYieldPct": 9.8,
+    "eps": 12.1,
+    "debtToEquity": 0.52,
+    "roePct": 21.5,
+    "asOf": "2026-01-01",
+    "source": "FICTIONAL TEST DATA — replace this file's contents with real figures"
+  }
+]

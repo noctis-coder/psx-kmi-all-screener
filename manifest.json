@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "PSX KMI-All Investment Screener",
+  "version": "1.0.0",
+  "description": "Analyze and rank KMI-All sector companies using real supplied data, deterministic scoring, and AI-assisted interpretation. Requires the local backend to be running.",
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "PSX Screener"
+  },
+  "permissions": [
+    "storage",
+    "downloads"
+  ],
+  "host_permissions": [
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  }
+}

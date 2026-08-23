@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h2>PSX KMI-All Screener</h2>
+  <div class="subtitle">Sector analysis &amp; ranking backed by a local data/AI backend</div>
+
+  <div id="statusBar" class="status-bar offline">
+    <span class="status-dot"></span>
+    <span id="statusText">Checking backend...</span>
+  </div>
+
+  <div id="errorBanner" class="error-banner" style="display:none"></div>
+
+  <div class="card">
+    <label for="sector">Sector</label>
+    <select id="sector"><option>Loading sectors...</option></select>
+
+    <label for="period">Analysis Period (label only — reflects your data's actual date range)</label>
+    <select id="period">
+      <option>Last 6 Months</option>
+      <option>Last 12 Months</option>
+      <option>Custom / As Supplied</option>
+    </select>
+
+    <label for="count">Companies to Rank (Top N)</label>
+    <input id="count" type="number" value="5" min="1" max="10" />
+
+    <label for="budgetContext">FY2026-27 Budget Context (optional — paste relevant notes; used as background for AI interpretation only, not as numeric data)</label>
+    <textarea id="budgetContext" placeholder="e.g. Budget increases export rebates for textile sector..."></textarea>
+
+    <button id="run">Analyze Sector</button>
+    <small>Data comes only from your configured backend data provider. No figures are invented.</small>
+  </div>
+
+  <div id="loading" class="loading" style="display:none">Analyzing...</div>
+
+  <div id="results"></div>
+
+  <div class="card" id="exportCard" style="display:none">
+    <button id="exportBtn" class="secondary">Export to Excel (2-sheet .xlsx)</button>
+  </div>
+
+  <script src="lib/api.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
