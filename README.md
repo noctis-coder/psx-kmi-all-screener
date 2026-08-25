@@ -3,6 +3,7 @@
 > A full-stack stock screening and fundamental analysis platform for companies listed on the **Pakistan Stock Exchange (PSX)**.
 
 The **PSX KMI-All Investment Screener** provides a structured interface for exploring PSX-listed companies, filtering stocks by sector, retrieving live market data, and generating AI-assisted interpretations of available financial information.
+<img width="1600" height="900" alt="psx" src="https://github.com/user-attachments/assets/feb9f39a-f307-49b8-8984-2a1888ad631a" />
 
 The project combines a **Chrome Extension frontend**, **Node.js/Express backend**, **live PSX data extraction**, and a **provider-based analysis architecture** designed for future expansion.
 
