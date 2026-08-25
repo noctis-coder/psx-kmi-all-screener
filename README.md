@@ -3,9 +3,14 @@
 > A full-stack stock screening and fundamental analysis platform for companies listed on the **Pakistan Stock Exchange (PSX)**.
 
 The **PSX KMI-All Investment Screener** provides a structured interface for exploring PSX-listed companies, filtering stocks by sector, retrieving live market data, and generating AI-assisted interpretations of available financial information.
-<img width="1600" height="900" alt="psx" src="https://github.com/user-attachments/assets/feb9f39a-f307-49b8-8984-2a1888ad631a" />
 
-The project combines a **Chrome Extension frontend**, **Node.js/Express backend**, **live PSX data extraction**, and a **provider-based analysis architecture** designed for future expansion.
+The project combines a **Chrome Extension frontend**, **Node.js/Express backend**, **live PSX data extraction**, and a **provider-based architecture** designed for extensibility.
+
+---
+
+## 🖥️ Preview
+
+<img width="1600" height="900" alt="PSX KMI-All Investment Screener" src="https://github.com/user-attachments/assets/feb9f39a-f307-49b8-8984-2a1888ad631a" />
 
 ---
 
@@ -37,9 +42,7 @@ The platform extracts and processes available financial indicators, including:
 
 ### 🤖 AI-Assisted Analysis
 
-The backend includes a dedicated analysis layer for transforming available financial information into a more understandable interpretation.
-
-The architecture separates:
+The backend includes a dedicated analysis layer for transforming available financial information into an understandable interpretation.
 
 ```text
 Market Data
@@ -53,9 +56,9 @@ AI Provider
 User-Facing Interpretation
 ```
 
-The AI provider is configurable, allowing the analysis layer to be replaced or extended without restructuring the rest of the application.
+The AI provider is configurable, allowing the analysis layer to be extended with a production AI provider without restructuring the rest of the application.
 
-> The current deployment uses a configurable provider architecture; AI output can be extended with a production AI provider in future iterations.
+> The current deployment uses a configurable `mock` AI provider. Production AI integration is planned for a future iteration.
 
 ### 🌐 Live PSX Data
 
@@ -159,7 +162,7 @@ Potential future data sources include:
 * WSJ Markets
 * Company annual reports
 
-This architecture allows additional sources to be integrated independently while keeping the screening logic decoupled from the underlying provider.
+Additional providers can be integrated independently while keeping the screening logic decoupled from the underlying data source.
 
 ---
 
@@ -233,7 +236,7 @@ Example response:
 POST /api/analyze
 ```
 
-The analysis endpoint processes company information and returns the available financial data together with the configured analysis output.
+The analysis endpoint processes company information and returns available financial data together with the configured analysis output.
 
 ---
 
@@ -254,7 +257,7 @@ The live provider has been tested against multiple PSX sectors, including:
 
 The market-watch parser has also been tested against **hundreds of live PSX market rows**.
 
-> These figures represent test results from development and are not guaranteed to remain constant as PSX market data changes.
+> These figures represent development test results and are not guaranteed to remain constant as PSX market data changes.
 
 ---
 
@@ -272,7 +275,7 @@ Make sure you have:
 ### 1. Clone the Repository
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
+git clone https://github.com/noctis-coder/psx-kmi-all-screener.git
 cd psx-kmi-all-screener
 ```
 
@@ -292,6 +295,8 @@ Example:
 DATA_PROVIDER=psx_portal
 AI_PROVIDER=mock
 ```
+
+> Do not commit `.env` files or API credentials to the repository.
 
 ### 4. Start the Backend
 
@@ -365,10 +370,10 @@ AI_PROVIDER=mock
 
 ### AI Providers
 
-| Provider               | Status         |
-| ---------------------- | -------------- |
-| `mock`                 | ✅ Configurable |
-| Production AI provider | 🔄 Planned     |
+| Provider               | Status     |
+| ---------------------- | ---------- |
+| `mock`                 | ✅ Active   |
+| Production AI provider | 🔄 Planned |
 
 This configuration-based approach makes the backend easier to maintain and extend.
 
@@ -424,13 +429,13 @@ Users should independently verify important financial information against author
 
 Computer Science Student • Full-Stack Developer • AI & Financial Technology Enthusiast
 
-GitHub: **@noctis-coder**
+GitHub: [@noctis-coder](https://github.com/noctis-coder)
 
 ---
 
 ## 📄 License
 
-This project is currently under active development.
+This project is licensed under the **MIT License**.
 
-License information will be added when the project reaches its public release stage.
+See the [`LICENSE`](LICENSE) file for the full license text.
 
