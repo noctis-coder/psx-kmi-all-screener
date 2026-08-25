@@ -2,9 +2,9 @@
 
 > A full-stack stock screening and fundamental analysis platform for companies listed on the **Pakistan Stock Exchange (PSX)**.
 
-The **PSX KMI-All Investment Screener** provides investors and traders with a structured way to explore PSX-listed companies, filter stocks by sector, access live market information, and generate AI-assisted interpretations of company fundamentals.
+The **PSX KMI-All Investment Screener** provides a structured interface for exploring PSX-listed companies, filtering stocks by sector, retrieving live market data, and generating AI-assisted interpretations of available financial information.
 
-The project combines a **Chrome Extension frontend**, a **REST API backend**, live PSX data extraction, and an extensible AI analysis layer.
+The project combines a **Chrome Extension frontend**, **Node.js/Express backend**, **live PSX data extraction**, and a **provider-based analysis architecture** designed for future expansion.
 
 ---
 
@@ -12,15 +12,16 @@ The project combines a **Chrome Extension frontend**, a **REST API backend**, li
 
 ### 🔎 Stock Screening
 
-* Browse companies listed in the PSX KMI-All Share universe
+* Browse companies within the **PSX KMI-All Share** universe
 * Filter companies by sector
-* View live market information
 * Search and analyze individual companies
-* Sector-wise company counts and summaries
+* Retrieve live market-watch information
+* Display sector-wise company data and counts
+* Filter PSX market data specifically for KMI-All Share constituents
 
-### 📊 Fundamental Analysis
+### 📊 Fundamental Metrics
 
-The screener is designed to surface important fundamental indicators such as:
+The platform extracts and processes available financial indicators, including:
 
 * Market Price
 * P/E Ratio
@@ -31,113 +32,125 @@ The screener is designed to surface important fundamental indicators such as:
 * Debt-to-Equity
 * Other available company fundamentals
 
-> Data availability depends on what is currently provided by the underlying PSX/company data sources.
+> Metric availability depends on the underlying PSX and company data sources.
 
-### 🤖 AI-Assisted Interpretation
+### 🤖 AI-Assisted Analysis
 
-The platform includes an AI analysis layer that converts available financial information into a more understandable interpretation for the user.
+The backend includes a dedicated analysis layer for transforming available financial information into a more understandable interpretation.
 
 The architecture separates:
 
-* Data collection
-* Financial data processing
-* AI interpretation
-* Frontend presentation
+```text
+Market Data
+     ↓
+Financial Metrics
+     ↓
+Analysis Layer
+     ↓
+AI Provider
+     ↓
+User-Facing Interpretation
+```
 
-This allows the AI provider to be replaced or extended without redesigning the entire application.
+The AI provider is configurable, allowing the analysis layer to be replaced or extended without restructuring the rest of the application.
+
+> The current deployment uses a configurable provider architecture; AI output can be extended with a production AI provider in future iterations.
 
 ### 🌐 Live PSX Data
 
-The backend uses a live PSX data provider to retrieve market and sector information.
-
-The live provider currently handles:
+The live PSX provider currently supports:
 
 * PSX market-watch data
 * KMI-All Share filtering
-* Sector-wise information
+* Sector-wise data
 * Company-level information
 * P/E Ratio extraction
-* Sector mapping
+* PSX sector mapping
+
+The provider has been tested against hundreds of PSX market-watch records and multiple sector datasets.
 
 ### ⚡ REST API
 
-The backend exposes API endpoints for frontend and external clients.
+The backend exposes REST endpoints for the Chrome Extension and other potential clients.
 
-Example endpoints:
+Current endpoints include:
 
-```text
-GET /api/health
+```http
+GET  /api/health
 POST /api/analyze
 ```
 
-The health endpoint provides information about the current:
+The health endpoint reports:
 
-* Data provider
-* AI provider
+* Active data provider
+* Active AI provider
 * Data mode
 * Provider configuration
 * Provider status
 
 ### 🧩 Chrome Extension
 
-The screener is designed to work through a Chrome Extension interface, allowing users to interact with the screening and analysis functionality directly from the browser.
+The frontend is implemented as a **Chrome Extension using Manifest V3**, providing a browser-based interface for stock screening and company analysis.
 
 ---
 
 ## 🏗️ Architecture
 
 ```text
-┌──────────────────────────────┐
-│       Chrome Extension       │
-│          Frontend            │
-└──────────────┬───────────────┘
-               │
-               │ HTTPS / REST API
-               ▼
-┌──────────────────────────────┐
-│        Backend API           │
-│                              │
-│  ┌────────────────────────┐  │
-│  │ Stock Screening        │  │
-│  │ Company Analysis       │  │
-│  │ Sector Filtering       │  │
-│  │ AI Interpretation      │  │
-│  └────────────────────────┘  │
-└──────────────┬───────────────┘
-               │
-       ┌───────┴────────┐
-       ▼                ▼
-┌─────────────┐  ┌─────────────┐
-│ PSX Portal  │  │ AI Provider │
-│ Live Data   │  │    Layer    │
-└─────────────┘  └─────────────┘
+┌───────────────────────────────┐
+│        Chrome Extension       │
+│          Frontend             │
+│          Manifest V3          │
+└───────────────┬───────────────┘
+                │
+                │ HTTPS / REST
+                ▼
+┌───────────────────────────────┐
+│          Backend API          │
+│        Node.js / Express      │
+│                               │
+│  ┌─────────────────────────┐  │
+│  │ Stock Screening         │  │
+│  │ Sector Filtering        │  │
+│  │ Company Analysis        │  │
+│  │ Financial Processing    │  │
+│  │ AI Interpretation       │  │
+│  └─────────────────────────┘  │
+└───────────────┬───────────────┘
+                │
+        ┌───────┴────────┐
+        ▼                ▼
+┌──────────────┐  ┌──────────────┐
+│  PSX Portal  │  │ AI Provider  │
+│  Live Data   │  │    Layer     │
+└──────────────┘  └──────────────┘
 ```
 
-The architecture is intentionally provider-based so that additional financial data sources and AI providers can be integrated later.
+The system follows a **provider-based architecture**, reducing coupling between the application and external data or AI services.
+
+This makes it possible to introduce additional providers without redesigning the core application.
 
 ---
 
 ## 🗂️ Data Provider Architecture
 
-The backend supports a provider-based data architecture.
+The backend abstracts external financial data behind a provider layer.
 
-Currently available:
+### Current Provider
 
 ```text
 PSX Portal
-     │
-     ▼
-Live Market Data
-     │
-     ├── Market Watch
-     ├── KMI-All Share
-     ├── Sector Data
-     └── Company Data
+    │
+    ├── Market Watch
+    ├── KMI-All Share
+    ├── Sector Data
+    ├── Company Data
+    └── P/E Ratio
 ```
 
-The provider abstraction makes it possible to introduce additional sources in the future without tightly coupling the application to a single data provider.
+### Planned Provider Expansion
 
-Potential future sources include:
+Potential future data sources include:
 
 * Business Recorder
 * TradingView
@@ -145,60 +158,50 @@ Potential future sources include:
 * WSJ Markets
 * Company annual reports
 
+This architecture allows additional sources to be integrated independently while keeping the screening logic decoupled from the underlying provider.
+
 ---
 
 ## 🧠 AI Analysis Architecture
 
-The AI layer is separated from the market-data layer.
+Financial data and AI interpretation are intentionally separated.
 
 ```text
 PSX Data
-   │
-   ▼
+    │
+    ▼
+Data Processing
+    │
+    ▼
 Financial Metrics
-   │
-   ▼
+    │
+    ▼
 Analysis Engine
-   │
-   ▼
+    │
+    ▼
 AI Provider
-   │
-   ▼
+    │
+    ▼
 Investor-Friendly Interpretation
 ```
 
-This allows the application to evolve from a simple data screener into a more comprehensive financial research assistant.
+This separation allows the project to evolve from a market screener into a broader financial research platform.
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Frontend
-
-* HTML
-* CSS
-* JavaScript
-* Chrome Extension APIs
-* Manifest V3
-
-### Backend
-
-* Node.js
-* Express.js
-* REST API
-* Provider-based architecture
-
-### Data
-
-* Pakistan Stock Exchange (PSX) Portal
-* Live market-watch data
-* Sector-wise PSX data
-
-### Deployment
-
-* Cloudflare Workers
-* HTTPS API
-* `workers.dev` deployment
+| Layer              | Technology                  |
+| ------------------ | --------------------------- |
+| Frontend           | HTML, CSS, JavaScript       |
+| Browser Platform   | Chrome Extension API        |
+| Extension Standard | Manifest V3                 |
+| Backend            | Node.js, Express.js         |
+| API                | REST                        |
+| Data Source        | Pakistan Stock Exchange     |
+| Architecture       | Provider-based architecture |
+| Deployment         | Cloudflare Workers          |
+| Development        | Wrangler                    |
 
 ---
 
@@ -229,44 +232,58 @@ Example response:
 POST /api/analyze
 ```
 
-The analysis endpoint processes the requested company information and returns the available financial data together with the configured analysis output.
+The analysis endpoint processes company information and returns the available financial data together with the configured analysis output.
 
 ---
 
-## 📈 Supported Sector Data
+## 📈 Sector Coverage
 
-The backend is capable of retrieving sector-wise PSX information, including sectors such as:
+The live provider has been tested against multiple PSX sectors, including:
 
-* Commercial Banks
-* Textile Spinning
-* Miscellaneous
-* Transport
-* Property
-* Vanaspati & Allied
-* Glass & Ceramics
-* Paper & Board
-* And other PSX sectors available through the portal
+| Sector             | Example Records |
+| ------------------ | --------------: |
+| Textile Spinning   |              31 |
+| Miscellaneous      |              17 |
+| Transport          |               6 |
+| Property           |               5 |
+| Vanaspati & Allied |               1 |
+| Glass & Ceramics   |               7 |
+| Paper & Board      |              10 |
+| Commercial Banks   |              19 |
+
+The market-watch parser has also been tested against **hundreds of live PSX market rows**.
+
+> These figures represent test results from development and are not guaranteed to remain constant as PSX market data changes.
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone the repository
+### Prerequisites
+
+Make sure you have:
+
+* Node.js
+* npm
+* Google Chrome
+* Git
+
+### 1. Clone the Repository
 
 ```bash
 git clone <YOUR_REPOSITORY_URL>
-cd <YOUR_REPOSITORY_NAME>
+cd psx-kmi-all-screener
 ```
 
-### 2. Install dependencies
+### 2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Configure environment variables
+### 3. Configure Environment Variables
 
-Create a `.env` file if your deployment requires environment-specific configuration.
+Create a `.env` file when environment-specific configuration is required.
 
 Example:
 
@@ -275,7 +292,7 @@ DATA_PROVIDER=psx_portal
 AI_PROVIDER=mock
 ```
 
-### 4. Start the backend
+### 4. Start the Backend
 
 ```bash
 npm start
@@ -289,76 +306,70 @@ npm run dev
 
 ### 5. Load the Chrome Extension
 
-1. Open Chrome
+1. Open Google Chrome.
 2. Navigate to:
 
 ```text
 chrome://extensions
 ```
 
-3. Enable **Developer mode**
-4. Select **Load unpacked**
-5. Choose the extension directory
+3. Enable **Developer mode**.
+4. Select **Load unpacked**.
+5. Select the project's Chrome Extension directory.
+6. Launch the extension.
 
 ---
 
-## ☁️ Cloudflare Worker Deployment
+## ☁️ Cloudflare Workers Deployment
 
-The backend can be deployed using Cloudflare Workers.
+The backend can be deployed using **Cloudflare Workers**.
 
-Local development:
+### Local Development
 
 ```bash
 npx wrangler dev --local --port 8787
 ```
 
-Authentication:
+### Authenticate Wrangler
 
 ```bash
 npx wrangler login
 ```
 
-Deployment:
+### Deploy
 
 ```bash
 npx wrangler deploy
 ```
 
-The production API can then be consumed by the Chrome Extension through HTTPS.
+After deployment, the Chrome Extension can communicate with the backend through the deployed HTTPS endpoint.
 
 ---
 
 ## 🔐 Configuration
 
-The backend uses provider configuration to determine how financial data and AI analysis are supplied.
+Provider selection is controlled through environment configuration.
 
-Example:
-
-```text
-DATA_PROVIDER = psx_portal
-AI_PROVIDER   = mock
+```env
+DATA_PROVIDER=psx_portal
+AI_PROVIDER=mock
 ```
 
-This makes the system easier to maintain and extend as additional providers are introduced.
+### Data Providers
 
----
+| Provider           | Status     |
+| ------------------ | ---------- |
+| `psx_portal`       | ✅ Active   |
+| Additional sources | 🔄 Planned |
 
-## 🧪 Tested Data
+### AI Providers
 
-The live PSX provider has been tested against multiple sectors, including:
+| Provider               | Status         |
+| ---------------------- | -------------- |
+| `mock`                 | ✅ Configurable |
+| Production AI provider | 🔄 Planned     |
 
-| Sector             | Example Records |
-| ------------------ | --------------: |
-| Textile Spinning   |              31 |
-| Miscellaneous      |              17 |
-| Transport          |               6 |
-| Property           |               5 |
-| Vanaspati & Allied |               1 |
-| Glass & Ceramics   |               7 |
-| Paper & Board      |              10 |
-| Commercial Banks   |              19 |
-
-The live market-watch parser has also been tested against hundreds of PSX market rows.
+This configuration-based approach makes the backend easier to maintain and extend.
 
 ---
 
@@ -369,7 +380,8 @@ The live market-watch parser has also been tested against hundreds of PSX market
 * [x] PSX market-watch integration
 * [x] KMI-All Share filtering
 * [x] Sector-wise filtering
-* [x] Live PSX provider
+* [x] Live PSX data provider
+* [x] PSX sector mapping
 * [x] P/E Ratio extraction
 * [x] Company analysis endpoint
 * [x] Health monitoring endpoint
@@ -384,24 +396,24 @@ The live market-watch parser has also been tested against hundreds of PSX market
 * [ ] Advanced fundamental scoring
 * [ ] Dividend analysis
 * [ ] Financial statement analysis
-* [ ] Company annual-report extraction
+* [ ] Annual-report data extraction
 * [ ] Portfolio tracking
 * [ ] Watchlists
-* [ ] Improved AI-powered investment reports
 * [ ] Automated data-quality validation
-* [ ] More advanced technical indicators
+* [ ] Advanced technical indicators
+* [ ] Production AI-powered investment reports
 
 ---
 
-## ⚠️ Data Disclaimer
+## ⚠️ Data & Investment Disclaimer
 
-This project is intended for **educational, research, and informational purposes**.
+This project is intended for **educational, research, and informational purposes only**.
 
-Financial information may be incomplete, delayed, unavailable, or subject to changes in the underlying data sources.
+Financial data may be incomplete, delayed, unavailable, or affected by changes in the underlying data sources.
 
-AI-generated interpretations should not be considered financial advice or a substitute for independent investment research.
+AI-generated interpretations are experimental and should **not** be considered financial advice.
 
-Always verify important financial information against authoritative sources before making investment decisions.
+Users should independently verify important financial information against authoritative sources before making investment decisions.
 
 ---
 
@@ -411,12 +423,13 @@ Always verify important financial information against authoritative sources befo
 
 Computer Science Student • Full-Stack Developer • AI & Financial Technology Enthusiast
 
-GitHub: **[@noctis-coder](https://github.com/noctis-coder)**
+GitHub: **@noctis-coder**
 
 ---
 
 ## 📄 License
 
-This project is currently under development.
+This project is currently under active development.
 
-License information will be added as the project reaches its public release stage.
+License information will be added when the project reaches its public release stage.
+
